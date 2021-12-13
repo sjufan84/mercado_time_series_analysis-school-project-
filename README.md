@@ -75,7 +75,26 @@ group_elements = [df_mercado_trends.index.year, df_mercado_trends.index.month]
 median_monthly_traffic = df_mercado_trends.groupby(by=group_elements).sum().median()
 ```   
 
-**By comparing the search traffic between May of 2020 vs. the median traffic by month for the rest of our dataset, we notice a much higher number for May of 2020, indicating a possible post-Covid / shutdown spike in search traffic.
+**By comparing the search traffic between May of 2020 vs. the median traffic by month for the rest of our dataset, we notice a much higher number for May of 2020, indicating a possible post-Covid / shutdown spike in search traffic.  
+
+### By utilizing an hvplot heatmap, we can visualize search traffic by day of the week and hour of the day to see if we can identify any valuable trends in our dataset --  
+
+```python  
+# Holoviews extension to render hvPlots in Colab
+hv.extension('bokeh')
+
+# Use hvPlot to visualize the hour of the day and day of week search traffic as a heatmap.
+df_mercado_trends.hvplot.heatmap(y = 'Date.dayofweek', x='Date.hour', ylabel = 'Day of the week (0 = Monday)', xlabel = 'Hour of the day', C='Search Trends', title = 'Heatmap of daily and hourly search traffic')  
+```
+![Heatmap of Google Search Trends](./Resources/heatmap1.png)  
+
+###  By utilizing Facebook Prophet, we can analyze our historical search trend data and project out to see what trends we might see in the coming periods --  
+
+![Prophet Plot](./Resources/prophet_plot.png)  
+
+**We can see above where our actual data points (black dots) end but the Prophet projections keep going out to our specified time of 2000 periods or hours based on our dataset
+
+
 
 
 
