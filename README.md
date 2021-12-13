@@ -92,8 +92,19 @@ df_mercado_trends.hvplot.heatmap(y = 'Date.dayofweek', x='Date.hour', ylabel = '
 
 ![Prophet Plot](./Resources/prophet_plot.png)  
 
-**We can see above where our actual data points (black dots) end but the Prophet projections keep going out to our specified time of 2000 periods or hours based on our dataset
+**We can see above where our actual data points (black dots) end but the Prophet projections keep going out to our specified time of 2000 periods or hours based on our dataset  
 
+###  Lastly we utilize Prophet with our daily revenue .csv file to generate revenue projections for the upcoming quarter for MercadoLibre.  By utilizing the models component analysis, we can isolate the yhat_lower ('lowest'), yhat_upper('highest'), and yhat ('most likely') variables in our projection dataframe to be able to project out the revenue numbers.  
+
+```python  
+# Displayed the summed values for all the rows in the forecast_quarter DataFrame
+display(mercado_sales_forecast_quarter.sum())  
+
+Best Case      2117.456877
+Worst Case     1773.794815
+Most Likely    1945.376201
+dtype: float64
+```
 
 
 
